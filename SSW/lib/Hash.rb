@@ -10,3 +10,12 @@ def multi_D_Hash(num_of_dimensions)
 end
 
 
+def getCounts(arr)
+  counter = Hash.new(0)
+  arr.each do |i|
+    counter[i] += 1
+  end
+  return(counter)
+end
+
+

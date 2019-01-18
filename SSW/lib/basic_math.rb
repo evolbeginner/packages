@@ -1,5 +1,6 @@
 # something about basic math
 
+
 module LotMath
   extend self
   def F(n)
@@ -74,4 +75,30 @@ def pearson_correlate(x,y)
   sy = y.sigma
   (xymean-(xmean*ymean))/(sx*sy)
 end
+
+
+def spearman_correlate(x, y)
+  require 'statsample'
+  x = x.to_vector(:scale)
+  y = y.to_vector(:scale)
+  return(Statsample::Bivariate.spearman(x,y))
+end
+
+
+def median(array)
+  sorted = array.sort
+  len = sorted.length
+  (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
+end
+
+
+####################################################
+def convertToLogValue(number, logBase)
+  if logBase.nil? or logBase <= 0 or ! logBase.is_a?(Integer)
+    return(number)
+  else
+    return(Math::log(number).to_f/Math::log(logBase))
+  end
+end
+
 
